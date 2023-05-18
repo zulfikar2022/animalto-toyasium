@@ -1,7 +1,7 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../../assets/logo.png";
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -68,7 +68,7 @@ const NavBar = () => {
             </NavLink>
           </Nav>
           <div>
-            <Button className="w-100 loginButton" >Login</Button>
+           <Link to='/login'> <Button className="w-100 loginButton" >Login</Button></Link>
           </div>
         </Navbar.Collapse>
       </Container>
