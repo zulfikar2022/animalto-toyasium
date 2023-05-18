@@ -1,0 +1,7 @@
+.footer-body{
+    background-color: #daeff8;
+}
+.footer-grid-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
