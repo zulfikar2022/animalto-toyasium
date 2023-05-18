@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SocialLogin.css";
 import { FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
@@ -7,14 +7,15 @@ import { authContext } from "../MyContext/AuthProvider";
 
 const SocialLogin = () => {
   const { loginWithGoogle, setUser } = useContext(authContext);
+  const navigate = useNavigate();
 
-  
 
   const handleGoogleLogin = () => {
     loginWithGoogle().then((res) => {
       const user = res.user;
       console.log(user);
       setUser(user);
+      navigate('/');
     });
   };
 
