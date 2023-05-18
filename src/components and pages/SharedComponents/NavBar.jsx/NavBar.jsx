@@ -7,7 +7,15 @@ import { useContext } from "react";
 import { authContext } from "../../../MyContext/AuthProvider";
 
 const NavBar = () => {
-  const {user} = useContext(authContext);
+  const {user,setUser,logOut} = useContext(authContext);
+  const handleLogOut = () => {
+    console.log('clicked log out');
+    logOut()
+      .then(res => {
+        console.log(res);
+        // setUser(null);
+      })
+  }
   return (
     <Navbar
       style={{ backgroundColor: "#a7daef6b" }}
@@ -46,22 +54,22 @@ const NavBar = () => {
             >
               All Toys
             </NavLink>
-            <NavLink
+         { user ?  <NavLink
               to="/message"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
             >
               My Toys
-            </NavLink>
-            <NavLink
+            </NavLink> : ''}
+          {user ?   <NavLink
               to="/messages"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
             >
               Add A Toy
-            </NavLink>
+            </NavLink> : ''}
             <NavLink
               to="/messages"
               className={({ isActive, isPending }) =>
@@ -71,8 +79,11 @@ const NavBar = () => {
               Blogs
             </NavLink>
           </Nav>
-          <div>
-           <Link to='/login'> <Button className="w-100 loginButton" >Login</Button></Link>
+          <div className="d-flex align-items-center">
+            {user ? <img className="user-photo" title={user?.displayName} src={user?.photoURL}></img>: ''}
+       {  !user?   <Link to='/login'> <Button className="w-100 loginButton" >Login</Button></Link>:
+        <Link onClick={handleLogOut}> <Button className="w-100 loginButton" >Logout</Button></Link>
+       }
           </div>
         </Navbar.Collapse>
       </Container>
