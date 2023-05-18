@@ -1,0 +1,35 @@
+.site-logo{
+    width: 100px;
+}
+.nav-links{
+    text-decoration: none;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: thin;
+    color: black;
+}
+
+.active{
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: rgb(0, 119, 255) !important;
+}
+
+.loginButton{
+    background-color: skyblue;
+    border: none;
+    color: black;
+}
+.loginButton:hover{
+    background-color: #14afef;
+    transition: 1s;
+    border: none;
+    color: black;
+}
