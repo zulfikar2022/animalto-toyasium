@@ -2,10 +2,13 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import "./Login.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { authContext } from "../../MyContext/AuthProvider";
 
 const Login = () => {
+  const {signIn,setUser}  = useContext(authContext);
   const [showPass,setShowPass] = useState(false);
+  const [error,setError] = useState('');
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -13,6 +16,21 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log({ email, password });
+
+    signIn(email,password)
+        .then(res => {
+          const loggedUser = res.user;
+          if(loggedUser){
+            setError('');
+            console.log(loggedUser);
+            setUser(loggedUser);
+            form.reset();
+          }
+        })
+        .catch(err => {
+          console.log(err.message);
+            setError(err.message);
+        })
   };
 
   return (
@@ -67,7 +85,9 @@ const Login = () => {
           Login
         </button>
         {/* failure message will be shown here */}
-        <div className="mb-2 "></div>
+        <div className="mb-2 ">
+          <p className="text-danger">{error ? error : ''}</p>
+        </div>
       </form>
       <p
         className="text-center  mt-0"

@@ -1,9 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../../assets/logo.png";
 import "./NavBar.css";
 import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { authContext } from "../../../MyContext/AuthProvider";
 
 const NavBar = () => {
+  const {user} = useContext(authContext);
   return (
     <Navbar
       style={{ backgroundColor: "#a7daef6b" }}
