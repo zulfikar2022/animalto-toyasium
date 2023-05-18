@@ -2,8 +2,11 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import "./Login.css";
+import { useState } from "react";
 
 const Login = () => {
+  const [showPass,setShowPass] = useState(false);
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -33,11 +36,22 @@ const Login = () => {
             Password
           </label>
           <input
-            type="password"
+            type={showPass? 'text' : 'password'}
             className="form-control"
             id="exampleInputPassword1"
             name="password"
           />
+          <input
+            type="checkbox"
+            className=""
+            onClick={() => setShowPass(!showPass)}
+            id="myCheckbox"
+            name="myCheckbox"
+            value="isChecked"
+          />
+          <label htmlFor="myCheckbox">
+            {showPass ? "Hide Password" : "Show Password"}
+          </label>
         </div>
 
         <button
@@ -55,7 +69,15 @@ const Login = () => {
         {/* failure message will be shown here */}
         <div className="mb-2 "></div>
       </form>
-      <p className="text-center  mt-0" style={{marginLeft:'auto',marginRight:'auto'}}>New to this site? <Link className="text-danger " to='/register'>please Register</Link></p>
+      <p
+        className="text-center  mt-0"
+        style={{ marginLeft: "auto", marginRight: "auto" }}
+      >
+        New to this site?{" "}
+        <Link className="text-danger " to="/register">
+          please Register
+        </Link>
+      </p>
       <SocialLogin></SocialLogin>
     </>
   );

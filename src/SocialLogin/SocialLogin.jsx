@@ -7,7 +7,8 @@ import { authContext } from "../MyContext/AuthProvider";
 
 const SocialLogin = () => {
   const { loginWithGoogle, setUser } = useContext(authContext);
-    
+
+  
 
   const handleGoogleLogin = () => {
     loginWithGoogle().then((res) => {

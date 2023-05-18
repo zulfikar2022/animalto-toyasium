@@ -1,7 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import "./Register.css";
+import { useContext, useState } from "react";
+import { authContext } from "../../MyContext/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const {createNewUser,auth,setUser} = useContext(authContext);
+  const [showPass,setShowPass] = useState(false);
+
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -10,6 +18,19 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log({name,email,password});
+        createNewUser(email,password)
+          .then(res => {
+            const user = res.user;
+            updateProfile(auth.currentUser,{
+              displayName:name
+            })
+            if(user){
+              Swal.fire('User successfully created!!!')
+              setUser(null);
+              form.reset();
+            }
+            
+          })
     }
 
   return (
@@ -46,13 +67,17 @@ const Register = () => {
           Password
         </label>
         <input
-          type="password"
+          type={showPass ? 'text' : 'password'}
           className="form-control"
           id="exampleInputPassword1"
           placeholder="Password"
           name="password"
           required
         />
+        <input type="checkbox" className="" onClick={() => setShowPass(!showPass)} id="myCheckbox" name="myCheckbox" value="isChecked" 
+        />
+          <label htmlFor="myCheckbox">{showPass? "Hide Password" : "Show Password" }</label>
+
       </div>
       <button type="submit" className=" w-100" style={{backgroundColor:'#14afef',border:'none',padding:'7px',borderRadius:'5px'}}>
        Register
