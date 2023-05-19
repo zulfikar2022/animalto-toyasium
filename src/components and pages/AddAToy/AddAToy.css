@@ -1,0 +1,9 @@
+.big-container{
+    background-color: #daeff8;
+}
+
+.add-a-toy-container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 20px;
+}

@@ -12,6 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.id || '/';
+  console.log(from);
 
   
   useEffect(() => {
@@ -39,7 +40,7 @@ const Login = () => {
               navigate('/');
             }
             else {
-              navigate(`/${from}`);
+              navigate(`/toys/${from}`);
             }
           }
         })

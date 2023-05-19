@@ -34,11 +34,11 @@ const AllToys = () => {
 
   return (
     <div className="mt-3">
-      <form onSubmit={handleSearch}>
-        <input type="text" name="search" className="me-2" />
-        <input type="submit" value="Search" className="btn btn-info" />
+      <form onSubmit={handleSearch} className="search-box">
+        <input style={{width:'100%'}} type="text" name="search" className="me-2" />
+        <input style={{width:'100%'}} type="submit" value="Search" className="btn btn-info" />
       </form>
-      <button  className={`btn btn-outline-info ${searchFlag ? "d-block" : 'd-none'}`} onClick={handleShowAll}>
+      <button  className={`btn btn-outline-info mt-2 ${searchFlag ? "d-block" : 'd-none'}`} onClick={handleShowAll}>
         {" "}
         Show all toys
       </button>

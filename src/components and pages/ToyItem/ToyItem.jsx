@@ -13,7 +13,7 @@ const ToyItem = ({ image, name, price, rating,id }) => {
   const navigate = useNavigate("");
   const { user } = useContext(authContext);
 
-  const handleViewDetails = () => {
+  const handleViewDetails = (id) => {
 
     if (!user) {
       Swal.fire("You have to log in first to view details");

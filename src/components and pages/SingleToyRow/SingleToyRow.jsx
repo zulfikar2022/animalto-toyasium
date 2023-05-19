@@ -11,12 +11,13 @@ const SingleToyRow = ({ toy }) => {
     toy;
   const { user } = useContext(authContext);
   const navigate = useNavigate();
-  const handleViewDetails = () => {
+ 
+  const handleViewDetails = (id) => {
     if (!user) {
       Swal.fire("You have to log in first to view details");
-      return navigate("/login", { state: { _id } });
+      return navigate("/login",{ state: { id } });
     } else {
-      navigate(`/toys/${_id}`);
+      navigate(`/toys/${id}`);
     }
   };
   return (

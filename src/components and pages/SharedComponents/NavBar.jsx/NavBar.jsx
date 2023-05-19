@@ -68,7 +68,7 @@ const NavBar = () => {
             )}
             {user ? (
               <NavLink
-                to="/messages"
+                to="/addToy"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
