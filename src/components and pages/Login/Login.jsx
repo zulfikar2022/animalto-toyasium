@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import "./Login.css";
 import { useContext, useState } from "react";
@@ -9,6 +9,8 @@ const Login = () => {
   const {signIn,setUser}  = useContext(authContext);
   const [showPass,setShowPass] = useState(false);
   const [error,setError] = useState('');
+  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -16,6 +18,7 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log({ email, password });
+
 
     signIn(email,password)
         .then(res => {
@@ -25,6 +28,7 @@ const Login = () => {
             console.log(loggedUser);
             setUser(loggedUser);
             form.reset();
+            navigate('/');
           }
         })
         .catch(err => {

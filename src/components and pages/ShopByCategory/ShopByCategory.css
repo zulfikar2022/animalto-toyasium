@@ -1,0 +1,14 @@
+.tablist-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+}
+li{
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.activeTab{
+    background-color: #daeff8;
+    border-radius: 5px;
+}

@@ -10,11 +10,13 @@ import Footer from "./components and pages/SharedComponents/Footer/Footer.jsx";
 import Login from "./components and pages/Login/Login.jsx";
 import Register from "./components and pages/Register/Register.jsx";
 import AuthProvider from "./MyContext/AuthProvider.jsx";
+import ErrorPage from "./components and pages/Pages/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
