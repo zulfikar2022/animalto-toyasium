@@ -6,11 +6,12 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./components and pages/MainLayout/MainLayout.jsx";
 import HomePage from "./components and pages/Pages/HomePage/HomePage.jsx";
-import Footer from "./components and pages/SharedComponents/Footer/Footer.jsx";
 import Login from "./components and pages/Login/Login.jsx";
 import Register from "./components and pages/Register/Register.jsx";
 import AuthProvider from "./MyContext/AuthProvider.jsx";
 import ErrorPage from "./components and pages/Pages/ErrorPage/ErrorPage.jsx";
+import AllToys from "./components and pages/AllToys/AllToys.jsx";
+import ToyDetails from "./components and pages/ToyDetails/ToyDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage></HomePage>,
+        loader: () => fetch('http://localhost:5000/allToys')
       },
       {
         path: "/login",
@@ -30,6 +32,15 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path:'/allToys',
+        element:<AllToys></AllToys>
+      },
+      {
+        path:'/:id',
+        element:<ToyDetails></ToyDetails>,
+        loader:({params}) => fetch(`http://localhost:5000/${params.id}`)
+      }
     ],
   },
 ]);

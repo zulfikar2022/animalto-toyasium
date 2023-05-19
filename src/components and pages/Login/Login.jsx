@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import "./Login.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../MyContext/AuthProvider";
 
 const Login = () => {
@@ -10,7 +10,13 @@ const Login = () => {
   const [showPass,setShowPass] = useState(false);
   const [error,setError] = useState('');
   const navigate = useNavigate();
-  // const navigate = useNavigate();
+  const location = useLocation();
+  
+  useEffect(() => {
+      document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
+  },[location])
+
+
 
   const handleLogin = (event) => {
     event.preventDefault();

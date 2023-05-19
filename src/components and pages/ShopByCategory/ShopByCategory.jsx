@@ -1,33 +1,104 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import "./ShopByCategory.css";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import 'react-tabs/style/react-tabs.css'; 
+import "react-tabs/style/react-tabs.css";
+import ToyItem from "../ToyItem/ToyItem";
 
-const ShopByCategory = () => {
+
+const ShopByCategory = ({ allToys }) => {
+  const [toys, setToys] = useState(allToys);
+  console.log(toys);
   return (
-    <div className="my-2">
+    <div className="my-4">
       <Tabs>
-        <TabList className='tablist-container'>
+        <TabList className="tablist-container">
           <Tab selectedClassName="activeTab">Lion</Tab>
           <Tab selectedClassName="activeTab">Panda</Tab>
           <Tab selectedClassName="activeTab">Elephant</Tab>
           <Tab selectedClassName="activeTab">Horse</Tab>
           <Tab selectedClassName="activeTab">Cow</Tab>
         </TabList>
-
         <TabPanel>
-          <h2>Lion data</h2>
+          <div className="lion-container">
+            {toys.map((toy) =>
+              toy.category === "lion" ? (
+                <ToyItem
+                  key={toy._id}
+                  image={toy.image}
+                  name={toy.name}
+                  price={toy.price}
+                  rating={toy.rating}
+                  id={toy._id}
+                ></ToyItem>
+              ) : null
+            )}
+          </div>
         </TabPanel>
         <TabPanel>
-          <h2>Panda Data</h2>
+          <div className="lion-container">
+            {toys.map((toy) =>
+              toy.category === "panda" ? (
+                <ToyItem
+                  key={toy._id}
+                  image={toy.image}
+                  name={toy.name}
+                  price={toy.price}
+                  rating={toy.rating}
+                  id={toy._id}
+                ></ToyItem>
+              ) : null
+            )}
+          </div>
         </TabPanel>
         <TabPanel>
-          <h2>Elephant Data</h2>
+          <div className="lion-container">
+            {toys.map((toy) =>
+              toy.category === "elephant" ? (
+                <ToyItem
+                  key={toy._id}
+                  image={toy.image}
+                  name={toy.name}
+                  price={toy.price}
+                  rating={toy.rating}
+                  id={toy._id}
+                ></ToyItem>
+              ) : null
+            )}
+          </div>
         </TabPanel>
         <TabPanel>
-          <h2>Horse Data</h2>
+          <div className="lion-container">
+            {toys.map((toy) =>
+              toy.category === "horse" ? (
+                <ToyItem
+                  key={toy._id}
+                  image={toy.image}
+                  name={toy.name}
+                  price={toy.price}
+                  rating={toy.rating}
+                  id={toy._id}
+                ></ToyItem>
+              ) : null
+            )}
+          </div>
         </TabPanel>
         <TabPanel>
-          <h2>Cow Data</h2>
+          <div className="lion-container">
+            {toys.map((toy) =>
+              toy.category === "cow" ? (
+                <ToyItem
+                  key={toy._id}
+                  image={toy.image}
+                  name={toy.name}
+                  price={toy.price}
+                  rating={toy.rating}
+                  id={toy._id}
+                ></ToyItem>
+              ) : null
+            )}
+          </div>
         </TabPanel>
       </Tabs>
     </div>

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Register.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../MyContext/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
@@ -10,6 +10,12 @@ import SocialLogin from "../../SocialLogin/SocialLogin";
 const Register = () => {
   const { createNewUser, auth, setUser } = useContext(authContext);
   const [showPass, setShowPass] = useState(false);
+  const location = useLocation();
+
+ 
+  useEffect(() => {
+    document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
+},[location])
 
   const handleRegister = (event) => {
     event.preventDefault();

@@ -12,3 +12,15 @@ li{
     background-color: #daeff8;
     border-radius: 5px;
 }
+.lion-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    
+}
+.lion-container img{
+    padding: 10px;
+    background-color: #daeff8;
+    border-radius: 5px;
+    height: 100%;
+}

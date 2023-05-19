@@ -2,17 +2,22 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../../assets/logo.png";
 import "./NavBar.css";
-import { Link, NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { useContext, useEffect } from "react";
 import { authContext } from "../../../MyContext/AuthProvider";
 
 const NavBar = () => {
   const { user, setUser, logOut } = useContext(authContext);
+  const location = useLocation();
+  useEffect(() => {
+    // console.log(location.pathname.slice(1));
+    document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
+  },[location])
   const handleLogOut = () => {
     console.log("clicked log out");
     logOut().then((res) => {
       console.log(res);
-      // setUser(null);
+      setUser(null);
     });
   };
   return (
@@ -46,7 +51,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink
-              to="/messages"
+              to="/allToys"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
