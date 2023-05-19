@@ -8,15 +8,11 @@ import { authContext } from "../../../MyContext/AuthProvider";
 
 const NavBar = () => {
   const { user, setUser, logOut } = useContext(authContext);
-  const location = useLocation();
-  useEffect(() => {
-    // console.log(location.pathname.slice(1));
-    document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
-  },[location])
+  
   const handleLogOut = () => {
-    console.log("clicked log out");
+
     logOut().then((res) => {
-      console.log(res);
+ 
       setUser(null);
     });
   };

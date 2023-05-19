@@ -6,7 +6,7 @@ const ToyDetails = () => {
   const location = useLocation();
 
   const toyData = useLoaderData();
-  console.log(toyData);
+
   const {
     image,
     name,

@@ -6,7 +6,6 @@ import './HomePage.css';
 
 const HomePage = () => {
     const allToys = useLoaderData();
-    console.log(allToys);
     return (
         <div>
             <Banner></Banner>

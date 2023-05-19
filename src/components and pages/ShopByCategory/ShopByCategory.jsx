@@ -9,7 +9,7 @@ import ToyItem from "../ToyItem/ToyItem";
 
 const ShopByCategory = ({ allToys }) => {
   const [toys, setToys] = useState(allToys);
-  console.log(toys);
+
   return (
     <div className="my-4">
       <Tabs>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
 import "./SocialLogin.css";
@@ -5,7 +6,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { authContext } from "../MyContext/AuthProvider";
 
-const SocialLogin = () => {
+const SocialLogin = ({from}) => {
   const { loginWithGoogle, setUser } = useContext(authContext);
   const navigate = useNavigate();
 
@@ -13,9 +14,14 @@ const SocialLogin = () => {
   const handleGoogleLogin = () => {
     loginWithGoogle().then((res) => {
       const user = res.user;
-      console.log(user);
+
       setUser(user);
-      navigate('/');
+      if(from === '/'){
+        navigate('/');
+      }
+      else{
+        navigate(`/${from}`);
+      }
     });
   };
 

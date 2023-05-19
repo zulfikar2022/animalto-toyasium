@@ -8,15 +8,18 @@ import Swal from "sweetalert2";
 import Rating from "react-rating";
 
 const ToyItem = ({ image, name, price, rating,id }) => {
-  console.log({ image });
+
   const navigate = useNavigate("");
   const { user } = useContext(authContext);
 
   const handleViewDetails = () => {
-    console.log("from inside the onclick handler");
+
     if (!user) {
       Swal.fire("You have to log in first to view details");
-      return navigate("/login");
+      return navigate("/login",{ state: { id } });
+    }
+    else{
+      navigate(`/${id}`);
     }
   };
   return (
@@ -24,21 +27,21 @@ const ToyItem = ({ image, name, price, rating,id }) => {
       <img src={image} className="card-img-top" alt="..." />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
-        <p className="card-text ">
+        <div className="card-text ">
           Price: <span>${price}</span>
           <p style={{ marginBottom: "0", display: "flex" }}>
             <span style={{ marginRight: "10px" }}> {rating}</span>
             <Rating initialRating={rating} readonly />
           </p>
-        </p>
-        <Link to={`/${id}`}>
+        </div>
+      
           <button
-            onClick={handleViewDetails}
+            onClick={() => handleViewDetails(id)}
             className="btn  btn-outline-info text-black"
           >
             View Details
           </button>
-        </Link>
+   
       </div>
     </div>
   );

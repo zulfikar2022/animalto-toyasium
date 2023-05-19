@@ -11,6 +11,8 @@ const Login = () => {
   const [error,setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const from = location?.state?.id || '/';
+
   
   useEffect(() => {
       document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
@@ -23,7 +25,7 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password });
+    
 
 
     signIn(email,password)
@@ -31,14 +33,17 @@ const Login = () => {
           const loggedUser = res.user;
           if(loggedUser){
             setError('');
-            console.log(loggedUser);
             setUser(loggedUser);
             form.reset();
-            navigate('/');
+            if(from === '/'){
+              navigate('/');
+            }
+            else {
+              navigate(`/${from}`);
+            }
           }
         })
         .catch(err => {
-          console.log(err.message);
             setError(err.message);
         })
   };
@@ -108,7 +113,7 @@ const Login = () => {
           please Register
         </Link>
       </p>
-      <SocialLogin></SocialLogin>
+      <SocialLogin from={from}></SocialLogin>
     </>
   );
 };
