@@ -24,7 +24,6 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
-    console.log({ name, email, password });
     createNewUser(email, password).then((res) => {
       const user = res.user;
       updateProfile(auth.currentUser, {
@@ -35,7 +34,6 @@ const Register = () => {
         Swal.fire("User successfully created!!!");
         setUser(null);
         form.reset();
-        console.log(user);
       }
     });
   };

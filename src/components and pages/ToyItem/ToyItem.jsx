@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import React from "react";
 import { useContext } from "react";
 import "./ToyItem.css";
 import { authContext } from "../../MyContext/AuthProvider";
@@ -19,7 +20,7 @@ const ToyItem = ({ image, name, price, rating,id }) => {
       return navigate("/login",{ state: { id } });
     }
     else{
-      navigate(`/${id}`);
+      navigate(`/toys/${id}`);
     }
   };
   return (

@@ -9,6 +9,7 @@ import ToyItem from "../ToyItem/ToyItem";
 
 const ShopByCategory = ({ allToys }) => {
   const [toys, setToys] = useState(allToys);
+  console.log(allToys);
 
   return (
     <div className="my-4">
