@@ -9,27 +9,32 @@ const AddAToy = () => {
   const handleAddToy = (event) => {
     event.preventDefault();
     const form = event.target;
-    const toyName = form.toyName.value;
-    const toyType = form.select.value;
+    const name = form.toyName.value;
+    const category = form.select.value;
     const sellerName = form.sellerName.value;
-    const email = form.email.value;
-    const quantity = parseInt(form.quantity.value);
+    const sellerEmail = form.email.value;
+    const availableQuantity = parseInt(form.quantity.value);
     const price = parseFloat(form.price.value);
     const rating = parseFloat(form.rating.value);
     const details = form.details.value;
     const image = form.image.value;
-    const newToy = {toyName,toyType,sellerName,email,quantity,price,rating,details,image,}
-    if ((rating < 0 || rating > 5) || quantity < 0 || price <= 0) {
+    const newToy = {name,category,sellerName,sellerEmail,availableQuantity,price,rating,details,image,}
+    if ((rating < 0 || rating > 5) || availableQuantity < 0 || price <= 0) {
       return Swal.fire("something is wrong with your inserted data. Please check");
     }
-    
+
     fetch(`http://localhost:5000/toy/addToy`,{
       method:"post",
-      body:JSON.stringify(newToy),
+      body: JSON.stringify(newToy),
       headers:{'content-type':'application/json'}
     })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+          if(data.insertedId){
+            Swal.fire('Your toy successfully added to the database!!!')
+            form.reset();
+          }
+        })
   };
 
   return (
