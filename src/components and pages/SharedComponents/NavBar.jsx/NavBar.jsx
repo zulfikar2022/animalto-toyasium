@@ -2,8 +2,8 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../../assets/logo.png";
 import "./NavBar.css";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { authContext } from "../../../MyContext/AuthProvider";
 
 const NavBar = () => {
@@ -12,8 +12,8 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut().then((res) => {
-      setUser(null);
       navigate("/");
+      setUser(null);
     });
   };
   return (
