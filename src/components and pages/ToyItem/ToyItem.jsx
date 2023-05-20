@@ -24,7 +24,7 @@ const ToyItem = ({ image, name, price, rating,id }) => {
     }
   };
   return (
-    <div className="card ">
+    <div className="card " data-aos="zoom-in" data-aos-duration="1000">
       <img src={image} className="card-img-top" alt="..." />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
