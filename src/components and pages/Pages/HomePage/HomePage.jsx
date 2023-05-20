@@ -7,6 +7,7 @@ import MobileApp from '../../MobileApp/MobileApp';
 
 const HomePage = () => {
     const allToys = useLoaderData();
+    console.log(allToys);
     return (
         <div>
             <Banner></Banner>

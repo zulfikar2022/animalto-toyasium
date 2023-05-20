@@ -6,9 +6,13 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import ToyItem from "../ToyItem/ToyItem";
 
-
 const ShopByCategory = ({ allToys }) => {
-  const [toys, setToys] = useState(allToys);
+  const [toys, setToys] = useState([]);
+  useEffect(() => {
+    setToys([...allToys]);
+    console.log(allToys);
+  }, [allToys]);
+  // console.log(allToys);
 
   return (
     <div className="my-4">
@@ -22,15 +26,15 @@ const ShopByCategory = ({ allToys }) => {
         </TabList>
         <TabPanel>
           <div className="lion-container">
-            {toys.map((toy) =>
-              toy.category === "lion" ? (
+            {toys?.map((toy) =>
+              toy?.category === "lion" ? (
                 <ToyItem
-                  key={toy._id}
-                  image={toy.image}
-                  name={toy.name}
-                  price={toy.price}
-                  rating={toy.rating}
-                  id={toy._id}
+                  key={toy?._id}
+                  image={toy?.image}
+                  name={toy?.name}
+                  price={toy?.price}
+                  rating={toy?.rating}
+                  id={toy?._id}
                 ></ToyItem>
               ) : null
             )}
@@ -38,15 +42,15 @@ const ShopByCategory = ({ allToys }) => {
         </TabPanel>
         <TabPanel>
           <div className="lion-container">
-            {toys.map((toy) =>
-              toy.category === "panda" ? (
+            {toys?.map((toy) =>
+              toy?.category === "panda" ? (
                 <ToyItem
-                  key={toy._id}
-                  image={toy.image}
-                  name={toy.name}
-                  price={toy.price}
-                  rating={toy.rating}
-                  id={toy._id}
+                  key={toy?._id}
+                  image={toy?.image}
+                  name={toy?.name}
+                  price={toy?.price}
+                  rating={toy?.rating}
+                  id={toy?._id}
                 ></ToyItem>
               ) : null
             )}
@@ -54,15 +58,15 @@ const ShopByCategory = ({ allToys }) => {
         </TabPanel>
         <TabPanel>
           <div className="lion-container">
-            {toys.map((toy) =>
-              toy.category === "elephant" ? (
+            {toys?.map((toy) =>
+              toy?.category === "elephant" ? (
                 <ToyItem
-                  key={toy._id}
-                  image={toy.image}
-                  name={toy.name}
-                  price={toy.price}
-                  rating={toy.rating}
-                  id={toy._id}
+                  key={toy?._id}
+                  image={toy?.image}
+                  name={toy?.name}
+                  price={toy?.price}
+                  rating={toy?.rating}
+                  id={toy?._id}
                 ></ToyItem>
               ) : null
             )}
@@ -70,15 +74,15 @@ const ShopByCategory = ({ allToys }) => {
         </TabPanel>
         <TabPanel>
           <div className="lion-container">
-            {toys.map((toy) =>
-              toy.category === "horse" ? (
+            {toys?.map((toy) =>
+              toy?.category === "horse" ? (
                 <ToyItem
-                  key={toy._id}
-                  image={toy.image}
-                  name={toy.name}
-                  price={toy.price}
-                  rating={toy.rating}
-                  id={toy._id}
+                  key={toy?._id}
+                  image={toy?.image}
+                  name={toy?.name}
+                  price={toy?.price}
+                  rating={toy?.rating}
+                  id={toy?._id}
                 ></ToyItem>
               ) : null
             )}
@@ -86,15 +90,15 @@ const ShopByCategory = ({ allToys }) => {
         </TabPanel>
         <TabPanel>
           <div className="lion-container">
-            {toys.map((toy) =>
-              toy.category === "cow" ? (
+            {toys?.map((toy) =>
+              toy?.category === "cow" ? (
                 <ToyItem
-                  key={toy._id}
-                  image={toy.image}
-                  name={toy.name}
-                  price={toy.price}
-                  rating={toy.rating}
-                  id={toy._id}
+                  key={toy?._id}
+                  image={toy?.image}
+                  name={toy?.name}
+                  price={toy?.price}
+                  rating={toy?.rating}
+                  id={toy?._id}
                 ></ToyItem>
               ) : null
             )}
