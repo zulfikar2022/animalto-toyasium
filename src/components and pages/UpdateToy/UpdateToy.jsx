@@ -1,17 +1,26 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable no-unused-vars */
-import { useContext, useEffect } from "react";
-import "./AddAToy.css";
+import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../MyContext/AuthProvider";
-import Swal from "sweetalert2";
 import { useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const AddAToy = () => {
+const UpdateToy = () => {
   const { user } = useContext(authContext);
   const location = useLocation();
+  console.log(location);
+  const [toy, setToy] = useState();
+  const id = location.state;
   useEffect(() => {
-    document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
-  }, [location]);
-  const handleAddToy = (event) => {
+    fetch(`http://localhost:5000/toy/update/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setToy(data);
+        console.log(toy);
+      });
+  }, [id]);
+
+  const handleUpdateToy = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.toyName.value;
@@ -23,7 +32,7 @@ const AddAToy = () => {
     const rating = parseFloat(form.rating.value);
     const details = form.details.value;
     const image = form.image.value;
-    const newToy = {
+    const updatedToy = {
       name,
       category,
       sellerName,
@@ -35,28 +44,32 @@ const AddAToy = () => {
       image,
     };
     if (rating < 0 || rating > 5 || availableQuantity < 0 || price <= 0) {
-      return Swal.fire(
-        "Something is wrong with your inserted data. Please check the rating , available quantity and price field"
-      );
+      return Swal.fire({
+        icon: "error",
+        text: "Something is wrong with your inserted data. Please check the rating , available quantity and price field",
+      });
     }
-
-    fetch(`http://localhost:5000/toy/addToy`, {
-      method: "post",
-      body: JSON.stringify(newToy),
+    fetch(`http://localhost:5000/toy/update/${id}`, {
+      method: "put",
+      body: JSON.stringify(updatedToy),
       headers: { "content-type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          Swal.fire("Your toy successfully added to the database!!!");
-          form.reset();
+        console.log(data);
+        if (data.modifiedCount) {
+          Swal.fire("Data updated successfully!!");
+        } else {
+          Swal.fire({
+            icon: "error",
+            text: "Data could not update",
+          });
         }
       });
   };
-
   return (
     <div className=" mt-2 big-container">
-      <form onSubmit={handleAddToy} className="p-2">
+      <form onSubmit={handleUpdateToy} className="p-2">
         <div className="add-a-toy-container">
           <div className="mb-3">
             <label htmlFor="exampleInputName1" className="form-label">
@@ -69,6 +82,7 @@ const AddAToy = () => {
               aria-describedby="emailHelp"
               required
               name="toyName"
+              defaultValue={toy?.name}
             />
           </div>
           <div>
@@ -76,13 +90,43 @@ const AddAToy = () => {
               Category
             </label>
             <br />
-            <select id="dropdown" name="select" required>
+            <select
+              id="dropdown"
+              name="select"
+              //   defaultValue={toy?.category}
+              required
+            >
               <option value="">Select a category</option>
-              <option value="lion">Lion</option>
-              <option value="panda">Panda</option>
-              <option value="elephant">Elephant</option>
-              <option value="horse">Horse</option>
-              <option value="cow">Cow</option>
+              <option
+                selected={toy?.category === "lion" ? true : false}
+                value="lion"
+              >
+                Lion
+              </option>
+              <option
+                selected={toy?.category === "panda" ? true : false}
+                value="panda"
+              >
+                Panda
+              </option>
+              <option
+                selected={toy?.category === "elephant" ? true : false}
+                value="elephant"
+              >
+                Elephant
+              </option>
+              <option
+                selected={toy?.category === "horse" ? true : false}
+                value="horse"
+              >
+                Horse
+              </option>
+              <option
+                selected={toy?.category === "cow" ? true : false}
+                value="cow"
+              >
+                Cow
+              </option>
             </select>
           </div>
           <div className="mb-3">
@@ -94,7 +138,7 @@ const AddAToy = () => {
               className="form-control"
               id="sellerName"
               required
-              defaultValue={user.displayName}
+              defaultValue={user?.displayName}
               name="sellerName"
             />
           </div>
@@ -107,7 +151,7 @@ const AddAToy = () => {
               className="form-control"
               id="sellerEmail"
               required
-              defaultValue={user.email}
+              defaultValue={user?.email}
               readOnly
               name="email"
             />
@@ -122,6 +166,7 @@ const AddAToy = () => {
               id="quantity"
               required
               name="quantity"
+              defaultValue={toy?.availableQuantity}
             />
           </div>
           <div className="mb-3">
@@ -134,6 +179,7 @@ const AddAToy = () => {
               className="form-control"
               id="price"
               required
+              defaultValue={toy?.price}
             />
           </div>
           <div className="mb-3">
@@ -146,6 +192,7 @@ const AddAToy = () => {
               id="rating"
               required
               name="rating"
+              defaultValue={toy?.rating}
             />
           </div>
           <div className="mb-3">
@@ -159,6 +206,7 @@ const AddAToy = () => {
               id="details"
               rows={4}
               style={{ width: "100%" }}
+              defaultValue={toy?.details}
             ></textarea>
           </div>
 
@@ -172,6 +220,7 @@ const AddAToy = () => {
               className="form-control"
               id="image"
               required
+              defaultValue={toy?.image}
             />
           </div>
         </div>
@@ -179,11 +228,11 @@ const AddAToy = () => {
         <input
           type="submit"
           className="mt-2 w-100 p-2 rounded border-0 btn btn-info"
-          value="Add toy"
+          value="Update toy"
         />
       </form>
     </div>
   );
 };
 
-export default AddAToy;
+export default UpdateToy;
