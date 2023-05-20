@@ -1,0 +1,14 @@
+.toy-details{
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width:576px) {
+    .toy-details{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .toy-details img{
+        width: 100%;
+    }
+}

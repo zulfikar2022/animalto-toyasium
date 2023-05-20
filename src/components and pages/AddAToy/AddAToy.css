@@ -7,3 +7,9 @@
         grid-template-columns: repeat(2,1fr);
         gap: 20px;
 }
+
+@media screen and (max-width:576px) {
+    .add-a-toy-container{
+        grid-template-columns: 1fr;
+    }
+}

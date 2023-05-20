@@ -80,7 +80,7 @@ const NavBar = () => {
               ""
             )}
             <NavLink
-              to="/messages"
+              to="/blogs"
               className={({ isActive, isPending }) =>
                 isPending ? "pending" : isActive ? "active" : ""
               }
@@ -88,7 +88,8 @@ const NavBar = () => {
               Blogs
             </NavLink>
           </Nav>
-          <div className="d-flex align-items-center">
+          {/* d-flex align-items-center */}
+          <div className="user-image-and-button">
             {user ? (
               <img
                 className="user-photo"

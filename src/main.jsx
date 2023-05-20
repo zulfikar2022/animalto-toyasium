@@ -16,6 +16,7 @@ import PrivateRoute from "./components and pages/PrivateRoute/PrivateRoute.jsx";
 import AddAToy from "./components and pages/AddAToy/AddAToy.jsx";
 import UpdateToy from "./components and pages/UpdateToy/UpdateToy.jsx";
 import ErrorPage from "./components and pages/Pages/ErrorPage/ErrorPage.jsx";
+import Blogs from "./components and pages/Blogs/Blogs.jsx";
 
 
 const router = createBrowserRouter([
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path:'/toy/updateToy',
         element:<PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>
+      },
+      {
+        path:"/blogs",
+        element:<Blogs></Blogs>
       }
     ],
   },

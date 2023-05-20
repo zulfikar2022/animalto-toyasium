@@ -23,9 +23,32 @@ const MyToys = () => {
         console.log(data);
       });
   }, [email]);
+  const handleShort =  (type) => {
+    console.log(type);
+       fetch(`http://localhost:5000/toy/myToys/sort?email=${email}&type=${type}`)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            setMyAllToys(data);
+          })
+  };
 
   return (
     <div className="mt-3">
+      <div className="d-flex flex-column w-25 ">
+        <button
+          className="btn btn-outline-info mb-2"
+          onClick={() => handleShort("ascending")}
+        >
+          Sort by Ascending
+        </button>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() => handleShort("descending")}
+        >
+          Sort by Descending
+        </button>
+      </div>
       <table className="table ">
         <thead>
           <tr>
@@ -47,7 +70,6 @@ const MyToys = () => {
               toy={toy}
             ></MyToyRow>
           ))}
-          {myAllToys.length}
         </tbody>
       </table>
     </div>
