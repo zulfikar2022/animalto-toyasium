@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import "./Blogs.css";
+import { useLocation } from "react-router-dom";
 
 const Blogs = () => {
+    const location = useLocation();
+    useEffect(() => {
+        document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
+      }, [location]);
   return (
     <div className="blog-container">
       <div className="blog">

@@ -13,7 +13,7 @@ const UpdateToy = () => {
   const [toy, setToy] = useState();
   const id = location.state;
   useEffect(() => {
-    fetch(`http://localhost:5000/toy/update/${id}`)
+    fetch(`https://toy-marketplace-server-sand.vercel.app/toy/update/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setToy(data);
@@ -50,7 +50,7 @@ const UpdateToy = () => {
         text: "Something is wrong with your inserted data. Please check the rating , available quantity and price field",
       });
     }
-    fetch(`http://localhost:5000/toy/update/${id}`, {
+    fetch(`https://toy-marketplace-server-sand.vercel.app/toy/update/${id}`, {
       method: "put",
       body: JSON.stringify(updatedToy),
       headers: { "content-type": "application/json" },

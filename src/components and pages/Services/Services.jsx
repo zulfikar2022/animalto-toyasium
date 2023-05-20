@@ -3,7 +3,7 @@ import { FaDownload, FaPhone, FaTruck, FaTruckMoving } from "react-icons/fa";
 
 const Services = () => {
   return (
-    <div className="service-body">
+    <div className="service-body mt-3">
       <div className="service-item">
         <div className="service-image">
           <FaTruck style={{ fontSize: "70px", color: "#87ceeb" }} />

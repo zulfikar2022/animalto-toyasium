@@ -16,7 +16,7 @@ const MyToys = () => {
 
   useEffect(() => {
     console.log("inside useEffect");
-    fetch(`http://localhost:5000/toy/myToys?email=${email}`)
+    fetch(`https://toy-marketplace-server-sand.vercel.app/toy/myToys?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyAllToys(data);
@@ -25,7 +25,7 @@ const MyToys = () => {
   }, [email]);
   const handleShort =  (type) => {
     console.log(type);
-       fetch(`http://localhost:5000/toy/myToys/sort?email=${email}&type=${type}`)
+       fetch(`https://toy-marketplace-server-sand.vercel.app/toy/myToys/sort?email=${email}&type=${type}`)
           .then(res => res.json())
           .then(data => {
             console.log(data);
