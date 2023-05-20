@@ -1,0 +1,23 @@
+.error-container{
+  /* margin-top: 18%; */
+  background-color: #daeff8;
+  padding: 50px;
+  margin-top: 1rem;
+  border-radius: 5px;
+
+}
+.error-code{
+    font-size: 100px;
+    font-weight: bold;
+}
+.error-message{
+    font-size: 50px;
+    font-weight: bold;
+}
+.error-description{
+    font-weight: bold;
+}
+.error-description a{
+    color: blue;
+    text-decoration: underline;
+}

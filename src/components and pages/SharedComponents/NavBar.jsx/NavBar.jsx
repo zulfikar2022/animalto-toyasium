@@ -2,18 +2,18 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../../assets/logo.png";
 import "./NavBar.css";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { authContext } from "../../../MyContext/AuthProvider";
 
 const NavBar = () => {
   const { user, setUser, logOut } = useContext(authContext);
-  
-  const handleLogOut = () => {
+  const navigate = useNavigate();
 
+  const handleLogOut = () => {
     logOut().then((res) => {
- 
       setUser(null);
+      navigate("/");
     });
   };
   return (

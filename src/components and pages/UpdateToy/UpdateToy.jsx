@@ -2,12 +2,13 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../MyContext/AuthProvider";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateToy = () => {
   const { user } = useContext(authContext);
   const location = useLocation();
+  const navigate = useNavigate();
   console.log(location);
   const [toy, setToy] = useState();
   const id = location.state;
@@ -59,6 +60,7 @@ const UpdateToy = () => {
         console.log(data);
         if (data.modifiedCount) {
           Swal.fire("Data updated successfully!!");
+            navigate('/myToys');
         } else {
           Swal.fire({
             icon: "error",
@@ -187,7 +189,7 @@ const UpdateToy = () => {
               Rating
             </label>
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="rating"
               required

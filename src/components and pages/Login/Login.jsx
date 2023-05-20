@@ -40,7 +40,7 @@ const Login = () => {
               navigate('/');
             }
             else {
-              navigate(`/toys/${from}`);
+              navigate(`/toys/${from}`,{replace:true});
             }
           }
         })

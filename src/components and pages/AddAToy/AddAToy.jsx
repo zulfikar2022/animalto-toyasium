@@ -141,7 +141,7 @@ const AddAToy = () => {
               Rating
             </label>
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="rating"
               required

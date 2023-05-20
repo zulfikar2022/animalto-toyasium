@@ -20,7 +20,7 @@ const SocialLogin = ({from}) => {
         navigate('/');
       }
       else{
-        navigate(`/toys/${from}`);
+        navigate(`/toys/${from}`,{replace:true});
       }
     });
   };
