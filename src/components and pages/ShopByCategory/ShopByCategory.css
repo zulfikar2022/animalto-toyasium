@@ -24,3 +24,14 @@ li{
     border-radius: 5px;
     height: 100%;
 }
+
+@media screen and (max-width:576px) {
+    .tablist-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .lion-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

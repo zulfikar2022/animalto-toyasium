@@ -30,7 +30,7 @@ const Footer = () => {
         </div>
         <div>
           <p className="fs-3 fw-bold">Social Link</p>
-          <ul >
+          <ul className="p-0">
             <li className="my-3"><FaFacebook/> <span>Facebook</span> </li>
             <li className="my-3"><FaTwitter/> <span>Twitter</span></li>
             <li  className="my-3"><FaInstagram/> <span>Instagram</span></li>

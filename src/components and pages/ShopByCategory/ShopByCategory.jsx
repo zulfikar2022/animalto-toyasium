@@ -13,7 +13,7 @@ const ShopByCategory = ({ allToys }) => {
   return (
     <div className="my-4">
       <Tabs>
-        <TabList className="tablist-container">
+        <TabList className="tablist-container ">
           <Tab selectedClassName="activeTab">Lion</Tab>
           <Tab selectedClassName="activeTab">Panda</Tab>
           <Tab selectedClassName="activeTab">Elephant</Tab>

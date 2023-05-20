@@ -18,3 +18,10 @@
     transform: scale(.9);
     transition: 1s;
 }
+
+@media screen and (max-width: 576px) {
+    .gallery-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

@@ -25,13 +25,14 @@ const NavBar = () => {
       <Container className="align-items-center">
         <div className="d-flex align-items-center">
           <img src={logo} className="site-logo rounded" />
-          <Navbar.Brand
-            href="#home"
-            className="fw-bold"
-            style={{ color: "black", marginLeft: "10px" }}
-          >
-            Animalto toyasium
-          </Navbar.Brand>
+          <Link>
+            <Navbar.Brand
+              className="fw-bold"
+              style={{ color: "black", marginLeft: "10px" }}
+            >
+              Animalto toyasium
+            </Navbar.Brand>
+          </Link>
         </div>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
