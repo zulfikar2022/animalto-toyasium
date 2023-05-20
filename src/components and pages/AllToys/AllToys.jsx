@@ -34,7 +34,7 @@ const AllToys = () => {
 
   return (
     <div className="mt-3">
-      <form onSubmit={handleSearch} className="search-box">
+      <form onSubmit={handleSearch} className="search-box mb-4">
         <input style={{width:'100%'}} type="text" name="search" className="me-2" />
         <input style={{width:'100%'}} type="submit" value="Search" className="btn btn-info" />
       </form>

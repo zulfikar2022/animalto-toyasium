@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./AddAToy.css";
 import { authContext } from "../../MyContext/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 const AddAToy = () => {
   const { user } = useContext(authContext);
+  const location = useLocation();
+  useEffect(() => {
+    document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
+  }, [location]);
   const handleAddToy = (event) => {
     event.preventDefault();
     const form = event.target;
