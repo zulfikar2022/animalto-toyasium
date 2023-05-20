@@ -6,32 +6,27 @@ import MyToyRow from "../MyToyRow/MyToyRow";
 
 const MyToys = () => {
   const location = useLocation();
-  const {user} = useContext(authContext);
+  const { user } = useContext(authContext);
   const email = user.email;
-  const [myAllToys,setMyAllToys] = useState([]);
-
+  const [myAllToys, setMyAllToys] = useState([]);
 
   useEffect(() => {
     document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
   }, [location]);
 
   useEffect(() => {
-    console.log('inside useEffect');
-        fetch(`http://localhost:5000/toy/myToys?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-              setMyAllToys(data);
-                console.log(data);
-            })
-  },[email])
-  console.log(email);
-  console.log('my all toys  ',myAllToys);
- 
-
+    console.log("inside useEffect");
+    fetch(`http://localhost:5000/toy/myToys?email=${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMyAllToys(data);
+        console.log(data);
+      });
+  }, [email]);
 
   return (
-  <div className="mt-3">
-              <table className="table ">
+    <div className="mt-3">
+      <table className="table ">
         <thead>
           <tr>
             <th scope="col">Picture</th>
@@ -44,15 +39,18 @@ const MyToys = () => {
           </tr>
         </thead>
         <tbody>
-         {
-            myAllToys.map(toy => <MyToyRow key={toy._id} toy={toy}></MyToyRow>)
-         }
-         {
-          myAllToys.length
-         }
+          {myAllToys.map((toy) => (
+            <MyToyRow
+              setMyAllToys={setMyAllToys}
+              myAllToys={myAllToys}
+              key={toy._id}
+              toy={toy}
+            ></MyToyRow>
+          ))}
+          {myAllToys.length}
         </tbody>
       </table>
-  </div>
+    </div>
   );
 };
 

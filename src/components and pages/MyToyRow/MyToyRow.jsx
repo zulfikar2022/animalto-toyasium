@@ -4,7 +4,7 @@
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyToyRow = ({ toy }) => {
+const MyToyRow = ({ toy,setMyAllToys,myAllToys }) => {
   const { _id, name, category, availableQuantity, price, rating, image } = toy;
   const navigate = useNavigate();
   const handleDeleteToy = () => {
@@ -25,6 +25,8 @@ const MyToyRow = ({ toy }) => {
         .then(data => {
             if(data.deletedCount === 1){
               Swal.fire("Deleted!", "Your toy is successfully deleted.", "success");
+              const remainingToys = myAllToys.filter(toy => toy._id !== _id);
+              setMyAllToys(remainingToys);
             }
         })
       }

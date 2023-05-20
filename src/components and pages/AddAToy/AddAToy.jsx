@@ -129,7 +129,7 @@ const AddAToy = () => {
               Price
             </label>
             <input
-              type="number"
+              type="text"
               name="price"
               className="form-control"
               id="price"
