@@ -44,6 +44,7 @@ const UpdateToy = () => {
       details,
       image,
     };
+    console.log('inside handle update   ',updatedToy);
     if (rating < 0 || rating > 5 || availableQuantity < 0 || price <= 0) {
       return Swal.fire({
         icon: "error",
@@ -95,7 +96,6 @@ const UpdateToy = () => {
             <select
               id="dropdown"
               name="select"
-              //   defaultValue={toy?.category}
               required
             >
               <option value="">Select a category</option>
