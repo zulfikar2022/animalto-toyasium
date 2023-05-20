@@ -1,5 +1,7 @@
 .footer-body{
     background-color: #daeff8;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 .footer-grid-container{
     display: grid;

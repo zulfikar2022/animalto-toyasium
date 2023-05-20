@@ -1,0 +1,26 @@
+.service-body{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    background-color: #daeff8;
+    padding-top: 10px;
+}
+.service-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+.service-item p:first-child{
+    font-weight: bold;
+}
+
+.service-item p{
+    margin-bottom: 0;
+}
+
+@media screen and (max-width:576px) {
+        .service-body{
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+}

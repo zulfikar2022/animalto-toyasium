@@ -4,7 +4,7 @@ import { FaFacebook,FaTwitter,FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="footer-body rounded pt-3 px-2" >
+    <div className="footer-body  pt-3 px-2" >
       <div className=" mt-2 p-2 footer-grid-container">
         <div>
           <img className="site-logo rounded" src={logo} alt="" />
