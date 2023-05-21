@@ -1,5 +1,8 @@
 .toy-details{
-    display: flex;
+    /* display: flex;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
 }
 
