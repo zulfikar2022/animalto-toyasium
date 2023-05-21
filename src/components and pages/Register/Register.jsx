@@ -11,11 +11,11 @@ const Register = () => {
   const { createNewUser, auth, setUser } = useContext(authContext);
   const [showPass, setShowPass] = useState(false);
   const location = useLocation();
+  const [errorMessage, setErrorMessage] = useState("");
 
- 
   useEffect(() => {
     document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
-},[location])
+  }, [location]);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -24,18 +24,26 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
-    createNewUser(email, password).then((res) => {
-      const user = res.user;
-      updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: photo,
+    createNewUser(email, password)
+      .then((res) => {
+        const user = res.user;
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        });
+        if (user) {
+          Swal.fire("User successfully created!!!");
+          setUser(null);
+          form.reset();
+        }
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        Swal.fire({
+          icon: "error",
+          text: `${errorMessage}`,
+        });
       });
-      if (user) {
-        Swal.fire("User successfully created!!!");
-        setUser(null);
-        form.reset();
-      }
-    });
   };
 
   return (
@@ -105,6 +113,7 @@ const Register = () => {
             {showPass ? "Hide Password" : "Show Password"}
           </label>
         </div>
+        {/* <div className="mb-2">{errorMessage && <p>{errorMessage}</p>}</div> */}
         <button
           type="submit"
           className=" w-100"
@@ -119,7 +128,7 @@ const Register = () => {
         </button>
 
         {/* success of failure message will be shown here */}
-        <div className="mb-2"></div>
+
         <p
           className="text-center  mt-0"
           style={{ marginLeft: "auto", marginRight: "auto" }}
