@@ -11,7 +11,7 @@ const Register = () => {
   const { createNewUser, auth, setUser } = useContext(authContext);
   const [showPass, setShowPass] = useState(false);
   const location = useLocation();
-  const [errorMessage, setErrorMessage] = useState("");
+
 
   useEffect(() => {
     document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
@@ -38,10 +38,9 @@ const Register = () => {
         }
       })
       .catch((error) => {
-        setErrorMessage(error.message);
         Swal.fire({
           icon: "error",
-          text: `${errorMessage}`,
+          text: `${error.message}`,
         });
       });
   };
