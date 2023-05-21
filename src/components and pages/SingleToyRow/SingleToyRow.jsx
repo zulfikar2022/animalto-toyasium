@@ -21,7 +21,7 @@ const SingleToyRow = ({ toy }) => {
     }
   };
   return (
-    <tr className="">
+    <tr className="" data-aos="zoom-in">
       <img style={{ height: "200px", width: "200px" }} src={image} alt="" />
       <td style={{ paddingTop: "84px", paddingBottom: "84px" }}>{name}</td>
       <td style={{ paddingTop: "84px", paddingBottom: "84px" }}>
