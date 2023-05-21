@@ -4,6 +4,7 @@ import ShopByCategory from '../../ShopByCategory/ShopByCategory';
 import ToyGallery from '../../ToyGallery/ToyGallery';
 import './HomePage.css';
 import MobileApp from '../../MobileApp/MobileApp';
+import BestCellingItems from '../../BestCellingItems/BestCellingItems';
 
 const HomePage = () => {
     const allToys = useLoaderData();
@@ -14,6 +15,7 @@ const HomePage = () => {
             <ToyGallery></ToyGallery>
             <MobileApp></MobileApp>
             <ShopByCategory allToys={allToys}></ShopByCategory>
+            <BestCellingItems></BestCellingItems>
         </div>
     );
 };

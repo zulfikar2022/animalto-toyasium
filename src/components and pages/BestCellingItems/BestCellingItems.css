@@ -1,0 +1,25 @@
+.bsi-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+.bsi-container div{
+    padding: 20px;
+    border-radius: 5px;
+}
+.bsi-1{
+    background-color: #daeff8;
+}
+
+.bsi-2{
+    background-color: #87ceeb;
+}
+
+@media screen and (max-width:576px) {
+        .bsi-container{
+            grid-template-columns: 1fr;
+        }
+}
