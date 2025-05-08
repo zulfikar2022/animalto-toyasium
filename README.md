@@ -82,7 +82,7 @@ Follow these steps to set up and run the project on your local machine:
 
 ### Additional Notes
 
-- Ensure your environment variables are properly configured provided in the .env.example file.
+- Ensure your environment variables are properly configured provided in the `.env.example` file.
 - For production builds, use:
   ```bash
   npm run build
