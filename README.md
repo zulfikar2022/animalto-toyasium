@@ -33,5 +33,3 @@ Welcome to **Animalto Toyasium**, an online platform where users can register, l
 | **React-Bootstrap**  | UI components based on Bootstrap |
 
 ---
-
-## 🛠️ Project Structure
