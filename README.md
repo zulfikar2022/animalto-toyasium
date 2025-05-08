@@ -33,3 +33,62 @@ Welcome to **Animalto Toyasium**, an online platform where users can register, l
 | **React-Bootstrap**  | UI components based on Bootstrap |
 
 ---
+
+## 🛠️ Running the Project Locally
+
+Follow these steps to set up and run the project on your local machine:
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn package manager
+- Git installed on your system
+
+### Steps
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/zulfikar2022/animalto-toyasium.git
+   cd animalto-toyasium
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+   Or, if you use Yarn:
+
+   ```bash
+   yarn install
+   ```
+
+3. **Start the Development Server**
+
+   ```bash
+   npm start
+   ```
+
+   Or, with Yarn:
+
+   ```bash
+   yarn start
+   ```
+
+4. **Access the Application**
+   Open your browser and navigate to `http://localhost:5173`.
+
+### Additional Notes
+
+- Ensure your environment variables are properly configured provided in the .env.example file.
+- For production builds, use:
+  ```bash
+  npm run build
+  ```
+  Or:
+  ```bash
+  yarn build
+  ```
+- Refer to the documentation for any specific setup instructions.
