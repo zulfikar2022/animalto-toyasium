@@ -15,22 +15,22 @@ const MyToys = () => {
   }, [location]);
 
   useEffect(() => {
-    console.log("inside useEffect");
-    fetch(`https://toy-marketplace-server-sand.vercel.app/toy/myToys?email=${email}`)
+    fetch(
+      `https://toy-marketplace-server-sand.vercel.app/toy/myToys?email=${email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyAllToys(data);
-        console.log(data);
       });
   }, [email]);
-  const handleShort =  (type) => {
-    console.log(type);
-       fetch(`https://toy-marketplace-server-sand.vercel.app/toy/myToys/sort?email=${email}&type=${type}`)
-          .then(res => res.json())
-          .then(data => {
-            console.log(data);
-            setMyAllToys(data);
-          })
+  const handleShort = (type) => {
+    fetch(
+      `https://toy-marketplace-server-sand.vercel.app/toy/myToys/sort?email=${email}&type=${type}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setMyAllToys(data);
+      });
   };
 
   return (

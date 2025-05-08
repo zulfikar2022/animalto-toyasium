@@ -9,7 +9,7 @@ const UpdateToy = () => {
   const { user } = useContext(authContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+
   const [toy, setToy] = useState();
   const id = location.state;
   useEffect(() => {
@@ -17,7 +17,6 @@ const UpdateToy = () => {
       .then((res) => res.json())
       .then((data) => {
         setToy(data);
-        console.log(toy);
       });
   }, [id]);
 
@@ -44,7 +43,7 @@ const UpdateToy = () => {
       details,
       image,
     };
-    console.log('inside handle update   ',updatedToy);
+
     if (rating < 0 || rating > 5 || availableQuantity < 0 || price <= 0) {
       return Swal.fire({
         icon: "error",
@@ -58,10 +57,9 @@ const UpdateToy = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount) {
           Swal.fire("Data updated successfully!!");
-            navigate('/myToys');
+          navigate("/myToys");
         } else {
           Swal.fire({
             icon: "error",
@@ -93,11 +91,7 @@ const UpdateToy = () => {
               Category
             </label>
             <br />
-            <select
-              id="dropdown"
-              name="select"
-              required
-            >
+            <select id="dropdown" name="select" required>
               <option value="">Select a category</option>
               <option
                 selected={toy?.category === "lion" ? true : false}

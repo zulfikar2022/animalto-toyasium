@@ -7,7 +7,7 @@ import { authContext } from "../../MyContext/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(authContext);
   const location = useLocation();
-  console.log(location);
+
   if (loading) {
     return (
       <div className="spinner-border" role="status">

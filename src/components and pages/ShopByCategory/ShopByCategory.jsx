@@ -10,7 +10,6 @@ const ShopByCategory = ({ allToys }) => {
   const [toys, setToys] = useState([]);
   useEffect(() => {
     setToys([...allToys]);
-    console.log(allToys);
   }, [allToys]);
   // console.log(allToys);
 

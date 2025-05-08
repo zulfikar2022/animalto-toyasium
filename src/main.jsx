@@ -18,17 +18,17 @@ import UpdateToy from "./components and pages/UpdateToy/UpdateToy.jsx";
 import ErrorPage from "./components and pages/Pages/ErrorPage/ErrorPage.jsx";
 import Blogs from "./components and pages/Blogs/Blogs.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <ErrorPage></ErrorPage> ,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <HomePage></HomePage>,
-        loader: () => fetch('https://toy-marketplace-server-sand.vercel.app/allToys')
+        loader: () =>
+          fetch("https://toy-marketplace-server-sand.vercel.app/allToys"),
       },
       {
         path: "/login",
@@ -39,31 +39,51 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path:'/allToys',
-        element:<AllToys></AllToys>,
-        loader: () => fetch('https://toy-marketplace-server-sand.vercel.app/allToys')
+        path: "/allToys",
+        element: <AllToys></AllToys>,
+        loader: () =>
+          fetch("https://toy-marketplace-server-sand.vercel.app/allToys"),
       },
       {
-        path:'/toys/:id',
-        element:<PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-        loader:({params}) => fetch(`https://toy-marketplace-server-sand.vercel.app/toys/${params.id}`)
+        path: "/toys/:id",
+        element: (
+          <PrivateRoute>
+            <ToyDetails></ToyDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://toy-marketplace-server-sand.vercel.app/toys/${params.id}`
+          ),
       },
       {
-        path:'/myToys',
-        element:<PrivateRoute><MyToys></MyToys></PrivateRoute>,
+        path: "/myToys",
+        element: (
+          <PrivateRoute>
+            <MyToys></MyToys>
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/addToy',
-        element:<PrivateRoute><AddAToy></AddAToy></PrivateRoute>
+        path: "/addToy",
+        element: (
+          <PrivateRoute>
+            <AddAToy></AddAToy>
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/toy/updateToy',
-        element:<PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>
+        path: "/toy/updateToy",
+        element: (
+          <PrivateRoute>
+            <UpdateToy></UpdateToy>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/blogs",
-        element:<Blogs></Blogs>
-      }
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
     ],
   },
 ]);

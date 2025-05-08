@@ -8,7 +8,7 @@ const AllToys = () => {
   const location = useLocation();
   const allToys = useLoaderData();
   const [showAllToys, setShowAllToys] = useState(allToys);
-  let [searchFlag,setSearchFlag] = useState(0);
+  let [searchFlag, setSearchFlag] = useState(0);
 
   useEffect(() => {
     document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
@@ -23,22 +23,36 @@ const AllToys = () => {
     );
     setShowAllToys(newToys);
     setSearchFlag(1);
-    console.log(searchFlag);
+
     event.target.reset();
   };
   const handleShowAll = () => {
     setShowAllToys(allToys);
-    setSearchFlag(0)
-    console.log(searchFlag);
+    setSearchFlag(0);
   };
 
   return (
     <div className="mt-3">
       <form onSubmit={handleSearch} className="search-box mb-4">
-        <input style={{width:'100%'}} type="text" name="search" className="me-2" />
-        <input style={{width:'100%'}} type="submit" value="Search" className="btn btn-info" />
+        <input
+          style={{ width: "100%" }}
+          type="text"
+          name="search"
+          className="me-2"
+        />
+        <input
+          style={{ width: "100%" }}
+          type="submit"
+          value="Search"
+          className="btn btn-info"
+        />
       </form>
-      <button  className={`btn btn-outline-info mt-2 ${searchFlag ? "d-block" : 'd-none'}`} onClick={handleShowAll}>
+      <button
+        className={`btn btn-outline-info mt-2 ${
+          searchFlag ? "d-block" : "d-none"
+        }`}
+        onClick={handleShowAll}
+      >
         {" "}
         Show all toys
       </button>

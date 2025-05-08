@@ -8,18 +8,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Rating from "react-rating";
 
-const ToyItem = ({ image, name, price, rating,id }) => {
-
+const ToyItem = ({ image, name, price, rating, id }) => {
   const navigate = useNavigate("");
   const { user } = useContext(authContext);
 
   const handleViewDetails = (id) => {
-
     if (!user) {
       Swal.fire("You have to log in first to view details");
-      return navigate("/login",{ state: { id } });
-    }
-    else{
+      return navigate("/login", { state: { id } });
+    } else {
       navigate(`/toys/${id}`);
     }
   };
@@ -32,17 +29,22 @@ const ToyItem = ({ image, name, price, rating,id }) => {
           Price: <span>${price}</span>
           <p style={{ marginBottom: "0", display: "flex" }}>
             <span style={{ marginRight: "10px" }}> {rating}</span>
-            <Rating initialRating={rating} readonly />
+
+            <Rating
+              initialRating={rating}
+              fullSymbol={<span>★</span>}
+              emptySymbol={<span>☆</span>}
+              readonly
+            />
           </p>
         </div>
-      
-          <button
-            onClick={() => handleViewDetails(id)}
-            className="btn  btn-outline-info text-black"
-          >
-            View Details
-          </button>
-   
+
+        <button
+          onClick={() => handleViewDetails(id)}
+          className="btn  btn-outline-info text-black"
+        >
+          View Details
+        </button>
       </div>
     </div>
   );

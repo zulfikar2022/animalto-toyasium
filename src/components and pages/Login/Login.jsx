@@ -6,47 +6,40 @@ import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../MyContext/AuthProvider";
 
 const Login = () => {
-  const {signIn,setUser}  = useContext(authContext);
-  const [showPass,setShowPass] = useState(false);
-  const [error,setError] = useState('');
+  const { signIn, setUser } = useContext(authContext);
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state?.id || '/';
-  console.log(from);
+  const from = location?.state?.id || "/";
 
-  
   useEffect(() => {
-      document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
-  },[location])
-
-
+    document.title = `Animalto Toyasium -${location.pathname.slice(1)}`;
+  }, [location]);
 
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    
 
-
-    signIn(email,password)
-        .then(res => {
-          const loggedUser = res.user;
-          if(loggedUser){
-            setError('');
-            setUser(loggedUser);
-            form.reset();
-            if(from === '/'){
-              navigate('/');
-            }
-            else {
-              navigate(`/toys/${from}`,{replace:true});
-            }
+    signIn(email, password)
+      .then((res) => {
+        const loggedUser = res.user;
+        if (loggedUser) {
+          setError("");
+          setUser(loggedUser);
+          form.reset();
+          if (from === "/") {
+            navigate("/");
+          } else {
+            navigate(`/toys/${from}`, { replace: true });
           }
-        })
-        .catch(err => {
-            setError(err.message);
-        })
+        }
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   };
 
   return (
@@ -70,7 +63,7 @@ const Login = () => {
             Password
           </label>
           <input
-            type={showPass? 'text' : 'password'}
+            type={showPass ? "text" : "password"}
             className="form-control"
             id="exampleInputPassword1"
             name="password"
@@ -102,7 +95,7 @@ const Login = () => {
         </button>
         {/* failure message will be shown here */}
         <div className="mb-2 ">
-          <p className="text-danger">{error ? error : ''}</p>
+          <p className="text-danger">{error ? error : ""}</p>
         </div>
       </form>
       <p

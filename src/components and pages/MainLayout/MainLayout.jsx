@@ -11,7 +11,7 @@ const MainLayout = () => {
     document.title = `Animalto Toyasium`;
   }, [location]);
   return (
-    <div className="container mt-2">
+    <div className="container mt-2 ">
       <NavBar></NavBar>
       <Outlet></Outlet>
       <Services></Services>

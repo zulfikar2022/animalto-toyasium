@@ -19,7 +19,7 @@ const ToyDetails = () => {
   } = toyData;
   useEffect(() => {
     document.title = `Animalto Toyasium- ${name}`;
-  }, [location]);
+  }, [location, name]);
 
   return (
     <div className="mt-3  toy-details" style={{ gap: "50px" }}>
